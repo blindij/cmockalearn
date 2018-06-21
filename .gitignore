@@ -3,6 +3,10 @@
 .ipynb_checkpoints
 *.png
 
+# vim temp file
+*.swp
+*.swo
+
 # emacs backup file
 *~
 # emacs recovery file
