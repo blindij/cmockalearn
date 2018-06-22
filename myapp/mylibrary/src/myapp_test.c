@@ -40,9 +40,15 @@ static void test_stencil_4p_2d(void **state){
     /* assert_float_equal(stencil_4p_2d(pfa, pfb, pfc, pfd), 5.0); */
 }
 
+static void test_moving_stencil(void **state){
+    (void) state;    /* unused */
+}
+
+
 int main(void) {
    const struct CMUnitTest tests[] = {
-      cmocka_unit_test(test_stencil_4p_2d)
+      cmocka_unit_test(test_stencil_4p_2d),
+      cmocka_unit_test(test_moving_stencil)
    };
    return cmocka_run_group_tests(tests, NULL, NULL);
 }
