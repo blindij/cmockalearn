@@ -28,19 +28,14 @@
 static void test_stencil_4p_2d(void **state){
     (void) state;  /* is unused */
     double res = 1.0;
-    double *pa, *pb, *pc, *pd;
     double a= 4.0;
     double b = 2.0;
     double c = 6.0;
     double d = 8.0;
-    pa = &a;
-    pb = &b;
-    pc = &c;
-    pd = &d;
-    res = stencil_4p_2d(pa,pb,pc,pd);
+    res = stencil_4p_2d(a,b,c,d);
     assert_true( res == 5.0);
     double a2d[3][3] = { {1.0,2.0,3.0},{4.0,5.0,6.0},{7.0,8.0,9.0}};
-    res = stencil_4p_2d(&a2d[0][1],&a2d[1][2],&a2d[2][1],&a2d[1][0] );
+    res = stencil_4p_2d(a2d[0][1],a2d[1][2],a2d[2][1],a2d[1][0] );
     assert_true(res == 5.0);
     /* assert_float_equal(stencil_4p_2d(pfa, pfb, pfc, pfd), 5.0); */
 }
