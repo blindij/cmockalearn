@@ -39,7 +39,9 @@ static void test_stencil_4p_2d(void **state){
     pd = &d;
     res = stencil_4p_2d(pa,pb,pc,pd);
     assert_true( res == 5.0);
-    assert_true(res < 5.1);
+    double a2d[3][3] = { {1.0,2.0,3.0},{4.0,5.0,6.0},{7.0,8.0,9.0}};
+    res = stencil_4p_2d(&a2d[0][1],&a2d[1][2],&a2d[2][1],&a2d[1][0] );
+    assert_true(res == 5.0);
     /* assert_float_equal(stencil_4p_2d(pfa, pfb, pfc, pfd), 5.0); */
 }
 
