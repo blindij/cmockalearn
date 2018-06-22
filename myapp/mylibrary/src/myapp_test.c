@@ -42,6 +42,33 @@ static void test_stencil_4p_2d(void **state){
 
 static void test_moving_stencil(void **state){
     (void) state;    /* unused */
+    int i,j;
+    /*
+     * matrix 3x3 with halo:
+     */
+    double a2d[5][5] = {{0.0,7.0,8.0,9.0,0.0},
+                        {3.0,1.0,2.0,3.0,1.0},
+                        {6.0,4.0,5.0,6.0,4.0},
+                        {9.0,7.0,8.0,9.0,7.0},
+                        {0.0,1.0,2.0,3.0,0.0}};
+    double result2d[3][3] = {{0.0,0.0,0.0},
+                      {0.0,0.0,0.0},
+                      {0.0,0.0,0.0}};
+    for (i=1; i < 4;i++)
+        for(j=1;j<4;j++) {
+        result2d[i-1][j-1] = stencil_4p_2d(a2d[i-1][j],a2d[i][j+1],a2d[i+1][j],a2d[i][j-1]);
+    }
+    
+    for (i=0;i<3;i++){
+        for(j=0;j<3;j++)
+            printf( "%f ", result2d[i][j]);
+        printf("\n");
+    }
+
+    printf("Result2d[0][0] = %f\n", result2d[0][0]);
+    assert_true(result2d[0][0] == 4.0);
+    printf("Result2d[2][2] = %f\n", result2d[1][1]);
+    assert_true (result2d[1][1] == 5.0);
 }
 
 
