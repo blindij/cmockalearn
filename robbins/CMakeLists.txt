@@ -55,4 +55,8 @@ if (ENABLE_CMOCKA)
        endif()
 endif()
 
+# Our additional modules
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
+include(test)
+
 add_subdirectory(src)
