@@ -23,11 +23,11 @@
  */
 
 int __wrap_accessdata(void){
-    bool isempty = false;
-    bool cannotallocate = false;
-    bool firsttimeaccess = false;
+    bool isempty;
+    bool cannotallocate;
+    bool firsttimeaccess;
     bool nextkeyis;
-
+    int tmp;
     // check_expected_ptr( <somevariable>)
 
     isempty = mock_type(bool);
@@ -37,14 +37,13 @@ int __wrap_accessdata(void){
 
     cannotallocate = mock_type(bool);
     if ( cannotallocate == true) {
-        return -1;
+        return -2;
     }
 
     firsttimeaccess = mock_type(bool);
     if ( firsttimeaccess == true) {
         return 0;
     }
-
     return mock_type(int);
 }
 
@@ -52,22 +51,51 @@ static int list_process(void){
     int rv;
     rv = accessdata();
     if ( rv < 0 ){
-        fprintf(stderr, "accessdata() cannot give key. Either is the list empty or the allocation of space for traversal keys has failed.\n");
+        fprintf(stderr, "accessdata() cannot give key:%d. Either is the list empty or the allocation of space for traversal keys has failed.\n",rv);
         return -1;
     }
 
-    return 0;
+    return rv;
+}
+
+static void test_accessdata_empty(void **state){
+    (void) state; /* unused */
+    int rv;
+    will_return(__wrap_accessdata,true);
+    will_return(__wrap_accessdata,false);
+    will_return(__wrap_accessdata,false);
+    will_return(__wrap_accessdata, -5);
+    rv=list_process();
+    assert_int_equal(-1,rv);
+
+}
+
+static void test_accessdata_firsttime(void **state){
+    (void) state;  /* unused */
+    int rv;
+    will_return(__wrap_accessdata,false);
+    will_return(__wrap_accessdata,false);
+    will_return(__wrap_accessdata,true);
+    // will_return(__wrap_accessdata,1);
+    rv = list_process();
+    assert_int_equal(0,rv);
+
 }
 
 static void test_accessdata(void **state){
     (void) state;  /* unused */
     int rv;
-
+    /*
+     *
+     */
+    // expect_any(accessdata, void);
     /*
      * We expect the accessdata to return 10 as the next free key
      */
-     will_return(__wrap_accessdata, 10);
-
+    will_return(__wrap_accessdata,false);
+    will_return(__wrap_accessdata,false);
+    will_return(__wrap_accessdata,false);
+    will_return(__wrap_accessdata, 12);
      /*
       * test  list process
       */
@@ -76,7 +104,7 @@ static void test_accessdata(void **state){
     /*
      * We expect to receive a valid key
      */ 
-    assert_int_equal(10,rv);
+    assert_int_equal(12,rv);
 }
 
 
@@ -88,8 +116,10 @@ static void null_test_success(void **state) {
 
 int main(void){
    const struct CMUnitTest tests[] = {
+      //cmocka_unit_test(test_accessdata_empty),
+      cmocka_unit_test(test_accessdata_firsttime),
       cmocka_unit_test(test_accessdata),
-      cmocka_unit_test(null_test_success),
+      //cmocka_unit_test(null_test_success),
    };
 
    return cmocka_run_group_tests(tests, NULL, NULL);
