@@ -62,9 +62,6 @@ static void test_accessdata_empty(void **state){
     (void) state; /* unused */
     int rv;
     will_return(__wrap_accessdata,true);
-    will_return(__wrap_accessdata,false);
-    will_return(__wrap_accessdata,false);
-    will_return(__wrap_accessdata, -5);
     rv=list_process();
     assert_int_equal(-1,rv);
 
@@ -76,7 +73,6 @@ static void test_accessdata_firsttime(void **state){
     will_return(__wrap_accessdata,false);
     will_return(__wrap_accessdata,false);
     will_return(__wrap_accessdata,true);
-    // will_return(__wrap_accessdata,1);
     rv = list_process();
     assert_int_equal(0,rv);
 
@@ -116,7 +112,7 @@ static void null_test_success(void **state) {
 
 int main(void){
    const struct CMUnitTest tests[] = {
-      //cmocka_unit_test(test_accessdata_empty),
+      cmocka_unit_test(test_accessdata_empty),
       cmocka_unit_test(test_accessdata_firsttime),
       cmocka_unit_test(test_accessdata),
       //cmocka_unit_test(null_test_success),
