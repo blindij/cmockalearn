@@ -7,5 +7,5 @@ typedef struct data_struct{
 
 int accessdata(void);
 int adddata(data_t data);
-// int freekey(int key);
-// int getdata(int key, data_t *datap);
+int freekey(int key);
+int getdata(int key, data_t *datap);

@@ -1,3 +1,4 @@
+include_directories(${PROJECT_SOURCE_DIR}/src)
 add_executable(
     unit.x
     test/main.c
