@@ -6,7 +6,8 @@
 // Function under test
 static int adder_process(data_t* tdata){
 int rv;
-rv = __wrap_adddata(tdata);
+//rv = __wrap_adddata(tdata);
+rv = adddata(tdata);
 
 if ( rv == -1){
     fprintf(stderr, "adddata() could not add data due missing storage space - the malloc() failed\n");
