@@ -12,6 +12,7 @@
 #include "listlib.h"
 #include "listuser_test_wrap.h"
 
+#include "test_adddata.c"
 /*
  * Here is a mocked listlib object. We start out with testing accessdata
  *
@@ -114,7 +115,7 @@ int main(void){
    const struct CMUnitTest tests[] = {
       cmocka_unit_test(test_accessdata_empty),
       cmocka_unit_test(test_accessdata_firsttime),
-      cmocka_unit_test(test_accessdata),
+      cmocka_unit_test(test_adddata),
       //cmocka_unit_test(null_test_success),
    };
 

@@ -6,6 +6,7 @@ typedef struct data_struct{
 } data_t;
 
 int accessdata(void);
-int adddata(data_t data);
+int adddata(const char *cmd);
+// int adddata(data_t data);
 int freekey(int key);
 int getdata(int key, data_t *datap);

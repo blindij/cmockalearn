@@ -14,5 +14,5 @@ target_link_libraries(
 set_target_properties(
     unit.x
     PROPERTIES
-    LINK_FLAGS  "-Wl,--wrap=accessdata"
+    LINK_FLAGS  "-Wl,--wrap=accessdata,--wrap=adddata"
 )

@@ -45,21 +45,21 @@ int accessdata(void){           // return a nonnegative key if successful
    return travptrs_size/2;
 }
 
-int adddata(data_t data){   // allocate node for data and add to end of list
-   list_t *newnode;
-   int nodesize;
-
-   nodesize = sizeof(list_t) + strlen(data.string) + 1;
-   if (newnode = (list_t *) malloc(nodesize) == NULL)    // could not add node
-      return -1;
-   newnode->item.time =  data.time;
-   newnode->item.string = (char *) newnode + sizeof(list_t);
-   strcpy(newnode->item.string,data.string);
-   newnode->next = NULL;
-   if (headptr == NULL)
-      headptr = newnode;
-   else
-      tailptr->next = newnode;
-   tailptr = newnode;
-   return 0;
-}
+//int adddata(data_t data){   // allocate node for data and add to end of list
+//   list_t *newnode;
+//   int nodesize;
+//
+//   nodesize = sizeof(list_t) + strlen(data.string) + 1;
+//   if (newnode = (list_t *) malloc(nodesize) == NULL)    // could not add node
+//      return -1;
+//   newnode->item.time =  data.time;
+//   newnode->item.string = (char *) newnode + sizeof(list_t);
+//   strcpy(newnode->item.string,data.string);
+//   newnode->next = NULL;
+//   if (headptr == NULL)
+//      headptr = newnode;
+//   else
+//      tailptr->next = newnode;
+//   tailptr = newnode;
+//   return 0;
+//}
