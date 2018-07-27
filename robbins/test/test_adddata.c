@@ -27,15 +27,10 @@ bool mallocfail;
 
 check_expected(xdata);
 
-//    success = mock_type(bool);
-//   if ( success == true) {
-//      return 0;
-//   }
-//
-//   mallocfail = mock_type(bool);
-//   if ( mallocfail == true ) {
-//      return -1;
-//   }
+    success = mock_type(bool);
+    if ( success == true) {
+      return 0;
+   }
 }
 
 static void test_adder_process(void **state){
@@ -48,7 +43,7 @@ data_t mydata = {
 
    expect_memory(__wrap_adddata, xdata, &mydata, sizeof(data_t));
    
-//   will_return(__wrap_adddata, true);
+   will_return(__wrap_adddata, true);
 
    // Test adddata()
    rv = adder_process(&mydata);
