@@ -115,7 +115,7 @@ int main(void){
    const struct CMUnitTest tests[] = {
       cmocka_unit_test(test_accessdata_empty),
       cmocka_unit_test(test_accessdata_firsttime),
-      cmocka_unit_test(test_adddata),
+      cmocka_unit_test(test_adder_process),
       //cmocka_unit_test(null_test_success),
    };
 
