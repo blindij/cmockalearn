@@ -16,3 +16,6 @@ set_target_properties(
     PROPERTIES
     LINK_FLAGS  "-Wl,--wrap=accessdata,--wrap=adddata,--wrap=getdata"
 )
+
+# add test
+add_test(unit ${PROJECT_BINARY_DIR}/bin/unit.x)

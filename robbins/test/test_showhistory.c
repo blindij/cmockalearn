@@ -29,6 +29,7 @@ static void showhistory(int *r){
    if (key == -1){
       fprintf(stderr, "No history\n");
       *r = -1;
+      return;
    }
    while(!getdata(key, &data) && (data.string != NULL)) {
       // fprintf(stderr,"Command: %s\nTime: %s\n", data.string, ctime(&(data.time));

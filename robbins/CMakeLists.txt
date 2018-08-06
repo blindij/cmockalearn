@@ -10,6 +10,9 @@ set(CMAKE_C_COMPILER clang)
 # specify the build type - types: Debug, Release, RelWithDebInfo, MinSizeRel
 set(CMAKE_BUILD_TYPE Debug)
 
+# set CTest
+include(CTest)
+
 # specify where to place binaries and libraries
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY
     ${CMAKE_BINARY_DIR}/bin
