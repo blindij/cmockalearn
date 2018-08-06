@@ -5,6 +5,7 @@ enable_language(C)
 
 # set the C standard
 set(C_STANDARD 99)
+set(CMAKE_C_COMPILER clang)
 
 # specify the build type - types: Debug, Release, RelWithDebInfo, MinSizeRel
 set(CMAKE_BUILD_TYPE Debug)
@@ -17,6 +18,9 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY
     ${CMAKE_BINARY_DIR}/lib
 )
+
+# Enable creating a compilation database
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 ## Options
 option(ENABLE_OpenMP "Enable OpenMP" OFF)
