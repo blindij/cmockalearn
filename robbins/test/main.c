@@ -28,7 +28,8 @@ int main(void){
       cmocka_unit_test(test_accessdata_firsttime),
       cmocka_unit_test(test_adder_process),
       cmocka_unit_test(test_showhistory_no_history),
-      cmocka_unit_test(test_showhistory),
+      cmocka_unit_test(test_showhistory_getaccess_return_one),
+      cmocka_unit_test(test_showhistory_datastring_to_null),
       //cmocka_unit_test(null_test_success),
    };
 

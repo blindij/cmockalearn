@@ -50,7 +50,7 @@ static void showhistory(int *r){
    }
 }
 
-static void test_showhistory(void **state){
+static void test_showhistory_getaccess_return_one(void **state){
     (void) state; /* unused */
     int rv;
     data_t   mydata;
@@ -90,6 +90,50 @@ static void test_showhistory(void **state){
 //
     showhistory(&rv);
     assert_int_equal(12,rv);
+
+}
+
+static void test_showhistory_datastring_to_null(void **state){
+    (void) state; /* unused */
+    int rv;
+    data_t   mydata;
+
+    expect_value(__wrap_getdata, key, -2);
+    will_return(__wrap_accessdata,false);
+    will_return(__wrap_accessdata,true);
+    will_return(__wrap_getdata, cast_ptr_to_largest_integral_type("nullabrakadabra"));
+//    expect_value(__wrap_getdata, key, 12);
+    //will_return(__wrap_accessdata,false);
+//    will_return(__wrap_accessdata,false);
+//     will_return(__wrap_accessdata,false);
+//    will_return(__wrap_accessdata,12);
+//    will_return(__wrap_getdata, cast_ptr_to_largest_integral_type("abrakadabra"));
+//    will_return(__wrap_getdata, 24);
+//    will_return(__wrap_getdata, 0);
+
+//    expect_value(__wrap_getdata, key, 12);
+//    will_return(__wrap_accessdata,false);
+//    will_return(__wrap_accessdata,false);
+//    will_return(__wrap_accessdata,false);
+//    will_return(__wrap_accessdata,12);
+//    will_return(__wrap_getdata, cast_ptr_to_largest_integral_type("hokuspokus"));
+//     will_return(__wrap_getdata, 0);
+    
+ //   expect_value(__wrap_getdata, key, 12);
+    //will_return(__wrap_accessdata, false);
+    //will_return(__wrap_accessdata, false);
+    //will_return(__wrap_accessdata, false);
+    // will_return(__wrap_accessdata, 12);
+//    will_return(__wrap_getdata, cast_ptr_to_largest_integral_type("morrison"));
+//    will_return(__wrap_getdata, 0);
+ 
+////    will_return(__wrap_accessdata,false);
+////    will_return(__wrap_accessdata,22);
+//    //will_return(__wrap_getdata, NULL);
+//    will_return(__wrap_getdata, 0);
+//
+    showhistory(&rv);
+    assert_int_equal(-2,rv);
 
 }
 
