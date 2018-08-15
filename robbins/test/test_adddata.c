@@ -52,3 +52,7 @@ data_t mydata = {
    // We expect adddata() to succeed
    assert_int_equal(0,rv);
 }
+
+static void test_mktime(void **state){
+    (void) state;  /* unused */
+}
