@@ -58,10 +58,37 @@ data_t mydata = {
 
 static void test_mktime(void **state){
     (void) state;            /* unused */
+    size_t strsize;      /* number of chars in timestr */
     time_t caltime1;          /* calendar time */
-    // time_t *ptrcaltime;       /* pointer to calendar time */
-    // ptrcaltime = &caltime2;
-    // caltime = time(ptrcaltime);
-    char *timestr = "Wed Aug 15 09:44:21 CEST 2018";
-    assert_string_equal("Wed Aug 15 09:44:21 CEST 2018", timestr);
+    time_t *ptrcaltime1 = &caltime1;
+    struct tm timestruct;
+    struct tm *ptr_timestruct = &timestruct;
+    // struct tm timestruct_new;
+    //struct tm *ptr_timestruct_new = &timestruct_new;
+    struct tm *ptr_timestruct_new;
+    char *timestr = "Wed Aug 15 09:44:21 2018";
+    char *dateformatstr = "%a %b %d %T %Y";
+    char timestr2[64];
+    char *ptr_char;
+
+    /*
+     * Convert string with time data to a time struct
+     */
+    ptr_char = strptime(timestr, dateformatstr, ptr_timestruct);
+
+    /*
+     * Convert time struct to calendar time
+     * and back again to another timestruct
+     * but this it is GMT 
+     */
+    caltime1 = mktime(ptr_timestruct);
+    ptr_timestruct_new = gmtime(ptrcaltime1);
+    
+    /* 
+     * Convert new timestruct with GMT to another string
+     */
+    strsize = strftime(timestr2,64,dateformatstr,ptr_timestruct_new);
+
+    assert_int_equal(24,strsize);
+    assert_string_equal("Wed Aug 15 07:44:21 2018", timestr2);
 }
