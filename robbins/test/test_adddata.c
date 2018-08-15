@@ -3,6 +3,9 @@
 // Code make a mock adddata() and calls the mocked function.
 //
 
+// Include statements
+#include <time.h>   /* provides mktime() and strptime() */
+
 // Function under test
 static int adder_process(data_t* tdata){
 int rv;
@@ -54,5 +57,11 @@ data_t mydata = {
 }
 
 static void test_mktime(void **state){
-    (void) state;  /* unused */
+    (void) state;            /* unused */
+    time_t caltime1;          /* calendar time */
+    // time_t *ptrcaltime;       /* pointer to calendar time */
+    // ptrcaltime = &caltime2;
+    // caltime = time(ptrcaltime);
+    char *timestr = "Wed Aug 15 09:44:21 CEST 2018";
+    assert_string_equal("Wed Aug 15 09:44:21 CEST 2018", timestr);
 }
