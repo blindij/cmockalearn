@@ -17,5 +17,13 @@ target_link_libraries(
 #    LINK_FLAGS "-Wl, --wrap=<functionnametowrap>"
 #)
 
+# make a temporary subdirectory
+file(MAKE_DIRECTORY ${PROJECT_BINARY_DIR}/tmp)
+
+# make a temporary file
+file(WRITE ${PROJECT_BINARY_DIR}/tmp/nintynine.txt "test5test5test5test5test5test5test5test5test5test5test5test5test5test5te
+"
+)
+
 # add test
 add_test(unit ${PROJECT_BINARY_DIR}/bin/unit.x)
