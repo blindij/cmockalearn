@@ -7,6 +7,7 @@ add_executable(
 
 target_link_libraries(
     unit.x
+    m
     ${CMOCKA_LIBRARIES}
     ${PROJECT_NAME}
 )
