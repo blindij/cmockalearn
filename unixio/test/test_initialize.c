@@ -3,6 +3,7 @@
 
 #include <errno.h>
 #include <unistd.h>
+#include <math.h>
 
 void test_initialize(void **state){
     int i,bw,myfd,totalwritten;
@@ -20,14 +21,15 @@ void test_initialize(void **state){
     ising_initialize_data(g,nN,nK,Texp,J, s);
 
     myfd = open("tmp/initdata", O_CREAT | O_WRONLY);
-    for(i=0;i<10;i++) {
+    for(i=0;i<1;i++) {
         bw = write(myfd,J,K*N*N*sizeof(real_t));
         if ( bw == -1) printf("Errno: %d\n", errno);
         totalwritten += bw;
     }
     close(myfd);
-
+    fprintf(stderr,"The VectorOneNorm: %e\n", vectornormone(J,K*N*N));
+    fprintf(stderr,"The VectorTwoNorm: %e\n", vectornormtwo(J,K*N*N));
     FREE(J);
     FREE(s);
-    assert_int_equal(100000,totalwritten);
+    assert_int_equal(10000,totalwritten);
 }

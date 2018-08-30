@@ -108,3 +108,20 @@ real_t random_normal_real ( void )
     return sqrt ( -2.0 * log(u1) ) * cos ( 2*M_PI*(real_t)u2 );
 }
 
+real_t vectornormone(real_t *J, size_t size){
+    real_t result;
+    int i;
+    result = 0.0;
+    for(i=0;i<size;i++)
+        result += fabs(J[i]);
+    return result;
+}
+
+real_t vectornormtwo(real_t *J, size_t length){
+    real_t result,tmp;
+    int i;
+    result= 0.0;
+    for(i=0;i<length;i++)
+        result += pow(fabs(J[i]),2.0);
+    return sqrt(result);
+}
