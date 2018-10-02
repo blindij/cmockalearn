@@ -10,6 +10,7 @@ target_link_libraries(
     m
     ${CMOCKA_LIBRARIES}
     ${PROJECT_NAME}
+    hdf5
 )
 
 #set_target_properties(

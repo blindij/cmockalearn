@@ -28,7 +28,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 ## Options
 option(ENABLE_OpenMP "Enable OpenMP" OFF)
 option(ENABLE_MPI "Enable MPI" OFF)
-option(ENABLE_CMOCKA "Enable CMokca" ON)
+option(ENABLE_CMOCKA "Enable CMocka" ON)
+option(ENABLE_HDF5 "Enable HDF5" ON)
 
 ### find OpenMP
 if (ENABLE_OpenMP)
@@ -60,6 +61,19 @@ if (ENABLE_CMOCKA)
        else()
         message(FATAL_ERROR "Could not find any CMocka installation")
        endif()
+endif()
+
+### find HDF5
+if (ENABLE_HDF5)
+#    set(HDF5_ROOT $ENV{HOME}/local/hdf5-1.10.3)
+    find_package(HDF5 REQUIRED)
+    if (${HDF5_FOUND})
+        include_directories(${HDF5_INCLUDE_DIRS})
+        link_directories(${HDF5_LIBRARIES})
+        message(STATUS "HDF5 found, version: ${HDF5_VERSION}")
+    else()
+        message(FATAL_ERROR "Could not find any HDF5 library")
+    endif()
 endif()
 
 # Our additional modules
