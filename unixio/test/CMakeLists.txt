@@ -9,7 +9,7 @@ target_link_libraries(
     unit.x
     m
     ${CMOCKA_LIBRARIES}
-    ${PROJECT_NAME}
+    ising
     hdf5
 )
 

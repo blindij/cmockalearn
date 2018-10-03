@@ -3,11 +3,11 @@
 #    showfile.c
 #)
 
-add_library(
-    ${PROJECT_NAME}
-    SHARED
-    iolib.c
-)
+#add_library(
+#    ${PROJECT_NAME}
+#    SHARED
+#    iolib.c
+#)
 
 #target_link_libraries(
 #    ${PROJECT_NAME}.x
