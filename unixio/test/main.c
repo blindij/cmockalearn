@@ -14,14 +14,12 @@
 
 #include "test_iolib.c"
 #include "test_initialize.c"
-#include "test_initialize_hdf5.c"
 
 int main(void){
     const struct CMUnitTest tests[] = {
         cmocka_unit_test(test_readline_null),
         cmocka_unit_test(test_readline),
         cmocka_unit_test(test_initialize),
-        cmocka_unit_test(test_hdf5_initialize),
     };
 
     return cmocka_run_group_tests(tests, NULL,NULL);
