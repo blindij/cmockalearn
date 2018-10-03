@@ -168,7 +168,12 @@ if (ENABLE_HDF5)
     endif()
 endif()
 
-
+# include projects own header files
+message(STATUS "src dir: ${PROJECT_SOURCE_DIR}")
+include_directories(${PROJECT_SOURCE_DIR}/src/include)
 
 # The source directory
 add_subdirectory(src)
+
+# The test directory
+add_subdirectory(test)
