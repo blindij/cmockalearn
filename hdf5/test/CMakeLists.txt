@@ -23,9 +23,9 @@ target_link_libraries(
 file(MAKE_DIRECTORY ${PROJECT_BINARY_DIR}/tmp)
 
 # make a temporary file
-file(WRITE ${PROJECT_BINARY_DIR}/tmp/nintynine.txt "test5test5test5test5test5test5test5test5test5test5test5test5test5test5te
-"
-)
+#file(WRITE ${PROJECT_BINARY_DIR}/tmp/nintynine.txt "test5test5test5test5test5test5test5test5test5test5test5test5test5test5te
+#"
+#)
 
 # add test
-add_test(unit ${PROJECT_BINARY_DIR}/bin/unit.x)
+add_test(${PROJECT_NAME} ${PROJECT_BINARY_DIR}/bin/unit.x)

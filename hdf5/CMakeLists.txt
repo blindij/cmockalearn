@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.6 FATAL_ERROR)
 
-project(unixio)
+project(hdf5)
 enable_language(C)
 
 # set the C standard
@@ -80,6 +80,6 @@ endif()
 find_package(ising PATHS $ENV{HOME}/local/share/ising/cmake)
 
 # Our additional modules
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
-
+#set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
+add_subdirectory(src)
 add_subdirectory(test)

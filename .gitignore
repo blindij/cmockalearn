@@ -38,3 +38,6 @@ a.out
 #
 */.vector_cache/
 */.data
+
+#hdf5 data files
+*.h5
