@@ -5,7 +5,6 @@ enable_language(C)
 
 # set the C standard
 set(C_STANDARD 99)
-set(CMAKE_C_COMPILER clang)
 
 # specify the build type - types: Debug, Release, RelWithDebInfo, MinSizeRel
 set(CMAKE_BUILD_TYPE Debug)
